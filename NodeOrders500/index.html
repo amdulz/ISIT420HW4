@@ -20,21 +20,24 @@
         <h2>Which stores are selling CD's for better markups? (price more than $13)</h2>
         <p>Here are the stores selling CD's for more than $13</p>
 
-        <input type="button" value="GetMarkups" onclick="findMarkup();" />
-        <p id="markups" />
+        <input type="button" value="GetMarkups" onclick="GetMarkups()" /><br />
+        <ul id="markups" />
+        <br />
     </div>
     <div>
         <h2>I want to check the performance of an employee</h2>
         <p>Will show the total amount sold for a salesperson for the entire year</p>
-        <p>choose an employee</p>
-        <input type="button" value="GetEmp" onclick="getEmployee();" />
-        <p id="employees" />
+        <br />
+        choose an employee <select name="employees" id="employees"></select><input type="button" value="GetEmp" onclick="GetEmployeeSales()" /><br />
+        <p id="employeeSales"></p>
+        <br />
     </div>
     <div>
         <h2>I want to see the performance of my stores</h2>
-        <p>choose a store</p>
-        <input type="button" value="GetStore" onclick="getStore();" />
-        <p id="store" />
+        <br />
+        choose an store <select name="stores" id="stores"></select><input type="button" value="GetStore" onclick="GetStoreSales()" /><br />
+        <p id="storeSales"></p>
+        <br />
     </div>
 
 

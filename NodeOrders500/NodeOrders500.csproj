@@ -165,8 +165,11 @@
     <Compile Include="CDTable.cs">
       <DependentUpon>NodeOrdersModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\NodeOrdersController.cs" />
-    <Compile Include="Controllers\Query1Controller.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeSalesController.cs" />
+    <Compile Include="Controllers\MarkupsController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\StoreSalesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

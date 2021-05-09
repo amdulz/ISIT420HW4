@@ -7,13 +7,17 @@ using System.Web.Http;
 
 namespace NodeOrders500.Controllers
 {
-    
-    public class NodeOrdersController : ApiController
+    public class StoreController : ApiController
     {
         NodeOrders500Entities myNodeOrdersDB = new NodeOrders500Entities();
-        public IEnumerable<Order> GetAllorders()
+
+        public IEnumerable<string> GetStores()
         {
-            return myNodeOrdersDB.Orders;
+            var result =
+                (from stores in myNodeOrdersDB.Orders
+                 select stores.StoreTable.City).Distinct().AsEnumerable();
+
+            return result;
         }
     }
 }

@@ -1,39 +1,74 @@
 ﻿
-var uri = 'api/NodeOrders';
 
+$(document).ready(function () {
+    GetEmployees();
+    GetStores();
+});
 
-
-
-
-function find() {
-    $('#saveResponse').text = '';
-    $("#notes").empty();
-    var id = $('#SearchId').val();
-    $.getJSON(uri + '/' + id)
+function GetMarkups() {
+    // Send an AJAX request
+    $.getJSON("api/Markups")
         .done(function (data) {
-            $('#note').text(formatItem(data));
-        })
-        .fail(function (jqXHR, textStatus, err) {
-            $('#note').text('Error: ' + err);
-        });
-}
 
-
-
-
-
-function findMarkup() {
-    $("#markups").empty();
-    var id = $('#GetMarkups').val();
-    $.getJSON("api/Query1" + '/' + id)
-        .done(function (data) {
-            // On success, 'data' contains a list of products.
             $.each(data, function (key, item) {
-                // Add a list item for the product.
+
                 $('<li>', { text: formatItem(item) }).appendTo($('#markups'));
             });
         });
 }
+
 function formatItem(item) {
-    return item.storeID + ':   ' + item.pricePaid;
+    return 'City : ' + item.City + ', Count: ' + item.Count;
+}
+
+function GetEmployees() {
+    // Send an AJAX request
+    $.getJSON("api/Employee")
+        .done(function (data) {
+
+            $.each(data, function (key, item) {
+
+                $('<option>', { text: item, value: item }).appendTo($('#employees'));
+            });
+        });
+}
+
+function GetStores() {
+    // Send an AJAX request
+    $.getJSON("api/Store")
+        .done(function (data) {
+
+            $.each(data, function (key, item) {
+
+                $('<option>', { text: item, value: item }).appendTo($('#stores'));
+            });
+        });
+}
+
+function GetEmployeeSales() {
+    let select = document.getElementById("employees");
+    let employeeName = select.options[select.selectedIndex].value;
+  
+
+    // Send an AJAX request
+    $.getJSON("api/EmployeeSales?employeeName=" + employeeName)
+        .done(function (data) {
+            console.log(data);
+
+            document.getElementById("employeeSales").innerText = "That employee sold $" + data + " for the year";
+        });
+}
+
+function GetStoreSales() {
+    let select = document.getElementById("stores");
+    let storeName = select.options[select.selectedIndex].value;
+   
+
+    // Send an AJAX request
+    $.getJSON("api/StoreSales?storeCity=" + storeName)
+        .done(function (data) {
+            console.log(data);
+
+            document.getElementById("storeSales").innerText = "That store sold $" + data + " for the year";
+        });
 }
